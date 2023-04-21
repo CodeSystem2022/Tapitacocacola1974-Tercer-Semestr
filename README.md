@@ -12,7 +12,7 @@
 
 -:computer: Ruiz Juan Ignacio.
 
--:computer: Perez Jose Roberto Emanuel
+-:computer: Perez Jose Roberto Emmanuel
 
 -:computer: cristian orozco
 
