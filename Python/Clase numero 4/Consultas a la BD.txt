@@ -1,0 +1,11 @@
+--Consulta informacion seleccionada
+--SELECT * FROM persona WHERE id_persona IN (1,2,3,4)
+--Ingresamos un nuevo elemento en la tabla
+--INSERT INTO persona(nombre,apellido,email) VALUES ('Susana','Lara','lara@live.com.ar')
+--Consultamos toda la tabla
+--select * FROM persona
+--Modifica una sola columna
+--UPDATE persona SET nombre = 'Ivonne',apellido='este', email='este@gmail.com' WHERE id_persona= 3
+SELECT * FROM persona
+--Elmina uno o mas registros
+--DELETE FROM persona WHERE id_persona=3
