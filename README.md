@@ -31,4 +31,4 @@
 | :pencil: semana 5 | ** |
 | :pencil: semana 6 | ** |
 | :pencil: semana 7 | ** |
-| :pencil: semana 8 | ** 
+| :pencil: semana 8 | ** |
