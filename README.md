@@ -13,7 +13,7 @@
 -:computer:Lopez Maximiliano Exequiel.
 -:computer:Orozco Cristian Emanuel.
 -:computer:Ruiz Juan Ignacio.
--:computer:Yanten Alexis.
+-:computer:LLanten Alexis
 -:computer:Yebrin Pablo.
 -:computer:Uriel Olguin.
 -:computer:Perez Jose Roberto Emmanuel.
