@@ -1,4 +1,0 @@
-programamos con diferentes tipos de archivos,ahora en txt.
-la palabra acción lleva acento.
-las letras son r read,w write,a append,x exception
-saludos a todos los alumnos de la tecnicatura
