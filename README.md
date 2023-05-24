@@ -24,11 +24,11 @@
 
 | **Número de semana** | **Scrum Master** |
 | ---- | ---- |
-| :pencil: semana 1 | ** |
-| :pencil: semana 2 | ** |
-| :pencil: semana 3 | ** |
-| :pencil: semana 4 | ** |
-| :pencil: semana 5 | ** |
-| :pencil: semana 6 | ** |
-| :pencil: semana 7 | ** |
-| :pencil: semana 8 | ** 
+| :pencil: semana 1 |Acosta Joaquin Avaro|
+| :pencil: semana 2 |Perez Jose Roberto Emmanuel|
+| :pencil: semana 3 |Uriel Olguin|
+| :pencil: semana 4 |Lopez Maximiliano Exequiel|
+| :pencil: semana 5 |Yebrin Pablo|
+| :pencil: semana 6 |Ruiz Juan Ignacio|
+| :pencil: semana 7 |Orozco Cristian Emanuel|
+| :pencil: semana 8 |Grande Victoria Josefina|
