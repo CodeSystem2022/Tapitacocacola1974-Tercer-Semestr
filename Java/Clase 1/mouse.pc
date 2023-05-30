@@ -1,0 +1,15 @@
+mouse.java
+
+ublic class mouse extends DispositivoEntrada {
+    private final int mouseID;
+    private static int mousesCount;
+
+    public mouse(String inputType, String marca) {
+        super(inputType, marca);
+        this.mouseID =  ++mouse.mousesCount;
+    }
+    @Override
+    public String toString(){
+        return "mouse{" + "mouseID = " + mouseID + "," + super.toString()+"}";
+    }
+}
