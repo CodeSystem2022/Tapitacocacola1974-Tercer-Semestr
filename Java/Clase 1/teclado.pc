@@ -1,0 +1,14 @@
+teclado.java
+
+public class teclado extends DispositivoEntrada{
+    private final int tecladoID;
+    private static int tecladoCount;
+    public teclado(String inputType, String marca) {
+        super(inputType, marca);
+        this.tecladoID = ++teclado.tecladoCount;
+    }
+    @Override
+    public String toString(){
+        return "teclado{" + "mouseID = " + tecladoID + "," + super.toString()+"}";
+    }
+}
