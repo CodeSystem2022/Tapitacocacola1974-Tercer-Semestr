@@ -32,3 +32,4 @@
 | :pencil: semana 6 |Ruiz Juan Ignacio|
 | :pencil: semana 7 |Orozco Cristian Emanuel|
 | :pencil: semana 8 |Grande Victoria Josefina|
+| :pencil: semana 9 |Perez Jose Roberto Emmanuel|
