@@ -1,48 +1,53 @@
 from logger_base import log
-import psycopg2 as bd
+from psycopg2 import pool
 import sys
 
-class connection:
+class Connection:
     _DATABASE = 'test_bd'
     _USERNAME = 'postgres'
     _PASSWORD = 'admin'
     _DB_PORT = '5432'
     _HOST = '127.0.0.1'
-    _conexion = None
-    _cursor = None
+    _MIN_CON = 1
+    _MAX_CON = 5
+    _pool = None
 
     @classmethod
     def Obtenerconnection(cls):
-        if cls._conexion is None:
-            try:
-                cls._conexion = bd.connect(host=cls._HOST,
-                                           user=cls._USERNAME,
-                                           password=cls._PASSWORD,
-                                           port=cls._DB_PORT,
-                                           database=cls._DATABASE)
-                log.debug(f'Connection succesful {cls._conexion}')
-                return cls._conexion
-            except Exception as e:
-                log.error(f'ocurrio un error: {e}')
-
-                sys.exit()
-        else:
-            return cls._conexion
+        conexion = cls.obtenerpool().getconn()
+        log.debug(f'conexion obtenida del pool: {conexion}')
+        return conexion
 
     @classmethod
     def ObtenerCursor(cls):
-        if cls._cursor is None:
+        pass
+
+    @classmethod
+    def obtenerpool(cls):
+        if cls._pool is None:
             try:
-                cls._cursor = cls.Obtenerconnection().cursor()
-                log.debug(f'Se abrio correctamente el cursor: {cls._cursor}')
-                return cls._cursor
+                cls._pool = pool.SimpleConnectionPool(cls._MIN_CON,
+                                                      cls._MAX_CON,
+                                                      host=cls._HOST,
+                                                      user=cls._USERNAME,
+                                                      password = cls._PASSWORD,
+                                                      port = cls._DB_PORT,
+                                                      database = cls._DATABASE)
+                log.debug(f'creacion de pool de conexion exitosa:  {cls._pool}')
+                return cls._pool
             except Exception as e:
-                log.error(f'Ocurrio un error: {e}')
+                log.error(f'ocurrio un error al obtener el pool: {e}')
                 sys.exit()
         else:
-            return cls._cursor
+            return cls._pool
+
 
 if __name__ == '__main__':
-    connection.Obtenerconnection()
-    connection.ObtenerCursor()
+    conexion1 = Connection.Obtenerconnection()
+    conexion2 = Connection.Obtenerconnection()
+    conexion3 = Connection.Obtenerconnection()
+    conexion4 = Connection.Obtenerconnection()
+    conexion5 = Connection.Obtenerconnection()
+
+
 
