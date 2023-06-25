@@ -67,9 +67,14 @@ function renderUser(users) {
     userItem.innerHTML = `
       <header class="d-flex justify-content-between align-items-center">
         <h3>${user.username}</h3>
-        <div>  
-          <button class="btn-delete btn btn-danger btn-sm">Delete</button>
-          <button class="btn-edit btn btn-secondary btn-sm">Edit</button>
+        <div class="dropdown">
+          <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton${user.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Acciones
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${user.id}">
+            <button class="dropdown-item btn-delete">Eliminar</button>
+            <button class="dropdown-item btn-edit">Editar</button>
+          </div>
         </div>
       </header>
       <p>${user.email}</p>
@@ -95,6 +100,12 @@ function renderUser(users) {
       userForm['email'].value = data.email;
       editing = true;
       userId = data.id;
+    });
+
+    const dropdownToggle = userItem.querySelector('.dropdown-toggle');
+    const dropdownMenu = userItem.querySelector('.dropdown-menu');
+    dropdownToggle.addEventListener('click', () => {
+      dropdownMenu.classList.toggle('show');
     });
 
     userList.appendChild(userItem);
