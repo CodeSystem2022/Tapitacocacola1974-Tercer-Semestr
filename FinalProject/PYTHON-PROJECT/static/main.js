@@ -15,7 +15,7 @@ userForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const username = userForm['username'].value;
-  const password = userForm['password'].value;
+  const direccion = userForm['direccion'].value;
   const email = userForm['email'].value;
 
   if (!editing) {
@@ -26,7 +26,7 @@ userForm.addEventListener('submit', async (e) => {
       },
       body: JSON.stringify({
         username,
-        password,
+        direccion,
         email,
       }),
     });
@@ -41,7 +41,7 @@ userForm.addEventListener('submit', async (e) => {
       },
       body: JSON.stringify({
         username,
-        password,
+        direccion,
         email,
       }),
     });
@@ -78,7 +78,7 @@ function renderUser(users) {
         </div>
       </header>
       <p>${user.email}</p>
-      <p class="text-truncate">${user.password}</p>
+      <p>${user.direccion}</p>
     `;
 
     const btnDelete = userItem.querySelector('.btn-delete');

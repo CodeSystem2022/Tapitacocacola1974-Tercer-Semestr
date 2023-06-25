@@ -83,7 +83,7 @@ console.log(persona2.apellido);
 persona2.nombre='Maria Laura';
 console.log(persona2.nombre);
 //console.log(persona2);
-
+ // leccion7
 let empleado1=new Empleado('Maria','Gimenez','Sistemas');
 console.log(empleado1);
 console.log(empleado1.nombreCompleto());
