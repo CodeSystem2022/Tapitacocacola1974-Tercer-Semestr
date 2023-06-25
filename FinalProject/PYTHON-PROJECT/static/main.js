@@ -68,10 +68,10 @@ function renderUser(users) {
       <header class="d-flex justify-content-between align-items-center">
         <h3>${user.username}</h3>
         <div class="dropdown">
-          <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton${user.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-secondary bg-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton${user.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Acciones
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${user.id}">
+          <div class="dropdown-menu bg-primary" aria-labelledby="dropdownMenuButton${user.id}">
             <button class="dropdown-item btn-delete">Eliminar</button>
             <button class="dropdown-item btn-edit">Editar</button>
           </div>
@@ -98,6 +98,7 @@ function renderUser(users) {
 
       userForm['username'].value = data.username;
       userForm['email'].value = data.email;
+      userForm['direccion'].value = data.direccion
       editing = true;
       userId = data.id;
     });

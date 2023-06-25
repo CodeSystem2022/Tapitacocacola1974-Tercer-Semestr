@@ -21,89 +21,112 @@ def get_connection():
 
 @app.get('/api/users')
 def get_users():
-    conn = get_connection()
-    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+    try:
+        conn = get_connection()
+        cur = conn.cursor(cursor_factory=extras.RealDictCursor)
 
-    cur.execute('SELECT * FROM users')
-    users = cur.fetchall()
-    cur.close()
-    conn.close()
-    return jsonify(users)
+        cur.execute('SELECT * FROM users')
+        users = cur.fetchall()
+        cur.close()
+        conn.close()
+        return jsonify(users)
+    except Exception as e:
+        return jsonify({'message': 'An error occurred while retrieving users: ' + str(e)}), 500
 
 @app.post('/api/users')
 def create_user():
-    new_user = request.get_json()
-    username = new_user['username']
-    email = new_user['email']
-    direccion = new_user['direccion']
-    print(username, email, direccion)
+    try:
+        new_user = request.get_json()
+        username = new_user['username']
+        email = new_user['email']
+        direccion = new_user['direccion']
+        print(username, email, direccion)
 
-    conn = get_connection()
-    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+        conn = get_connection()
+        cur = conn.cursor(cursor_factory=extras.RealDictCursor)
 
-    cur.execute('INSERT INTO users (username, email, direccion) VALUES (%s, %s, %s) RETURNING *',
-                (username, email, direccion))
-    new_created_user = cur.fetchone()
-    print(new_created_user)
-    conn.commit()
+        cur.execute('INSERT INTO users (username, email, direccion) VALUES (%s, %s, %s) RETURNING *',
+                    (username, email, direccion))
+        new_created_user = cur.fetchone()
+        print(new_created_user)
+        conn.commit()
 
-    cur.close()
-    conn.close()
-    return jsonify(new_created_user)
+        cur.close()
+        conn.close()
+        return jsonify(new_created_user)
+    except Exception as e:
+        return jsonify({'message': 'An error occurred while creating the user: ' + str(e)}), 500
+
+
 
 @app.delete('/api/users/<id>')
 def delete_users(id):
-    conn = get_connection()
-    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+    try:
 
-    cur.execute('DELETE FROM users WHERE id = %s RETURNING *', (id, ))
-    user = cur.fetchone()
-    conn.commit()
+        conn = get_connection()
+        cur = conn.cursor(cursor_factory=extras.RealDictCursor)
 
-    cur.close()
-    conn.close()
+        cur.execute('DELETE FROM users WHERE id = %s RETURNING *', (id, ))
+        user = cur.fetchone()
+        conn.commit()
 
-    if user is None:
-        return jsonify({'message': 'User not delete'}), 404
+        cur.close()
+        conn.close()
 
-    return jsonify(user)
+        if user is None:
+            return jsonify({'message': 'User not delete'}), 404
+
+        return jsonify(user)
+    except Exception as e:
+        return jsonify({'message': 'An error occurred while deleting the user: ' + str(e)}), 500
+
 
 @app.put('/api/users/<id>')
 def update_users(id):
-    conn = get_connection()
-    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+    try:
 
-    new_user = request.get_json()
-    username = new_user['username']
-    email = new_user['email']
-    direccion = new_user['direccion']
-    print(username, email, direccion)
+        conn = get_connection()
+        cur = conn.cursor(cursor_factory=extras.RealDictCursor)
 
-    cur.execute(
-        'UPDATE users SET username=%s, email=%s, direccion=%s WHERE id=%s RETURNING *',
-        (username, email, direccion, id))
-    updated_user = cur.fetchone()
-    conn.commit()
-    cur.close()
-    conn.close()
+        new_user = request.get_json()
+        username = new_user['username']
+        email = new_user['email']
+        direccion = new_user['direccion']
+        print(username, email, direccion)
 
-    if updated_user is None:
-        return jsonify({'message': 'User not found'}), 404
+        cur.execute(
+            'UPDATE users SET username=%s, email=%s, direccion=%s WHERE id=%s RETURNING *',
+            (username, email, direccion, id))
+        updated_user = cur.fetchone()
+        conn.commit()
+        cur.close()
+        conn.close()
 
-    return jsonify(updated_user)
+        if updated_user is None:
+            return jsonify({'message': 'User not found'}), 404
+
+        return jsonify(updated_user)
+    
+    except Exception as e:
+        return jsonify({'message': 'An error occurred while updating the user: ' + str(e)}), 500
+
+
 
 @app.get('/api/users/<id>')
 def get_user(id):
-    conn = get_connection()
-    cur = conn.cursor(cursor_factory=extras.RealDictCursor)
+    try:
+        conn = get_connection()
+        cur = conn.cursor(cursor_factory=extras.RealDictCursor)
 
-    cur.execute('SELECT * FROM users WHERE id = %s', (id,))
-    user = cur.fetchone()
+        cur.execute('SELECT * FROM users WHERE id = %s', (id,))
+        user = cur.fetchone()
 
-    if user is None:
-        return jsonify({'message': 'User not found'}), 404
+        if user is None:
+            return jsonify({'message': 'User not found'}), 404
 
-    return jsonify(user)
+        return jsonify(user)
+    except Exception as e:
+        return jsonify({'message': 'An error occurred while retrieving the user: ' + str(e)}), 500
 
 @app.route('/')
 def home():
