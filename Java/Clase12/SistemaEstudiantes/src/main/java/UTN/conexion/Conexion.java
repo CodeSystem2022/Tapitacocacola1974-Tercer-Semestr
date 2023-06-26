@@ -22,4 +22,8 @@ public class Conexion {
         }//fin catch
         return conexion;
     }//Fin método getConnection
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
