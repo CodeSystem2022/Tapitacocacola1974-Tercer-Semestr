@@ -21,12 +21,11 @@ class Persona{   // Clase pedre
         this._apellido = apellido;
     }
 }
- class Empleado extends Persona{   // Clase hija
-    contructor(nombre, apellido, departamento){
-        super(nombre, apellido);
-        this._departamento = departamento;
-    }
-
+class Empleado extends Persona{//clase hija
+constructor(nombre,apellido,departamento){
+    super(nombre,apellido);
+    this._departamento=departamento;
+}
 get departamento(){
     return this._departamento;
     }
