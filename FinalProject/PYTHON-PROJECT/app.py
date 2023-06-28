@@ -60,7 +60,7 @@ def create_user(): #se crea la funcion create_user
 
 
 @app.delete('/api/users/<id>')
-def delete_users(id): #creamos la funcion 
+def delete_users(id): #creamos la funcion delete users
     try:
 
         conn = get_connection()
@@ -82,7 +82,7 @@ def delete_users(id): #creamos la funcion
 
 
 @app.put('/api/users/<id>')
-def update_users(id): #funcion
+def update_users(id): #funcion update users
     try:
 
         conn = get_connection()

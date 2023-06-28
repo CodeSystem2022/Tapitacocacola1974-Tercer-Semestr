@@ -6,45 +6,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tapitacocacola1974-Proyecto final</title>
     <link rel="stylesheet" href="https://bootswatch.com/5/yeti/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url("https://i.pinimg.com/originals/3b/11/7b/3b117b6c107c9dd2eb9c12a148c49728.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 40vh;
+            width: 550px; /* Ajustar el ancho del contenedor */
+            margin: 0 auto; /* Centrar el contenedor horizontalmente */
+            padding: 45px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        #userForm {
+            margin-top: 20px;
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #botondesple {
+            margin-top: 0px;
+            margin-left: 0; /* Eliminar el margen izquierdo del botón */
+        }
+
+        .contenedor {
+            margin-top: 10px; /* Ajustar el margen superior del contenedor */
+            text-align: center;
+        }
+        
+        @media (max-height: 700px) {
+            #userForm {
+                margin-top: 10px;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-dark text-white">
     <div class="container">
-        <div class="col-md-4 offset-md-4">
-            <h1>Tapitacocacola1974-Proyecto final</h1>
-            <form id="userForm" action="" class="card card-body text-white" style="background-color: #202020;">
-                <label for="username">Nombre Completo</label>
-                <input 
-                    type="text" 
-                    name="username"
-                    placeholder="Nombre Completo"
-                    class="form-control mb-2" 
-                    required
-                />
-                <label for="email">Email</label>
-                <input 
-                    type="email" 
-                    name="email"
-                    placeholder="Email@hotmail.com"
-                    class="form-control mb-2" 
-                    required
-                />
-                <label for="direccion">Direccion</label>
-                <input 
-                    type="direccion" 
-                    name="direccion"
-                    placeholder="Escribir direccion"
-                    class="form-control mb-2" 
-                    required
-                />
-                <button class="btn btn-primary">Save</button>
-            </form>
-
-            <ul id="userList" class="list-group">
-            </ul>           
+        <h1>TapitaCocaCola1974-Proyecto Final</h1>
+        <form id="userForm" action="" class="card card-body text-white" style="background-color: #202020;">
+            <label for="username">Nombre Completo</label>
+            <input 
+                type="text" 
+                name="username"
+                placeholder="Nombre Completo"
+                class="form-control mb-2" 
+                required
+            />
+            <label for="email">Email</label>
+            <input 
+                type="email" 
+                name="email"
+                placeholder="Email@hotmail.com"
+                class="form-control mb-2" 
+                required
+            />
+            <label for="direccion">Direccion</label>
+            <input 
+                type="direccion" 
+                name="direccion"
+                placeholder="Escribir direccion"
+                class="form-control mb-2" 
+                required
+            />
+            <button class="btn btn-primary">Save</button>
+        </form>
+        <div class="contenedor">
+            <button id="botondesple" class="btn btn-primary dropdown-toggle" type="button">
+                Desplegar
+            </button>
+          
+            <div id="desple"> 
+                <ul id="userList" class="list-group">
+                </ul>  
+            </div>
         </div>
-        
     </div>
+
     <script src="/static/main.js"></script>
 </body>
 

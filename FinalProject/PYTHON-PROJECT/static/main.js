@@ -1,9 +1,9 @@
-const userForm = document.querySelector('#userForm'); //iniciamos manipulando el dom 
+const userForm = document.querySelector('#userForm');//comenzamos seleccionando user form desde el DOM  donde crearemos las tarjetas con los datos traidos desde el back
 let users = [];
 let editing = false;
 let userId = null;
 
-window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('DOMContentLoaded', async () => { // cuando el documento se cargue pedira el codigo al backend
   const response = await fetch('/api/users');
   const data = await response.json();
   console.log(data);
@@ -11,14 +11,14 @@ window.addEventListener('DOMContentLoaded', async () => {
   renderUser(users);
 });
 
-userForm.addEventListener('submit', async (e) => {
+userForm.addEventListener('submit', async (e) => {//aqui con el boton submit podemos enviar los datos del formulario
   e.preventDefault();
 
   const username = userForm['username'].value;
   const direccion = userForm['direccion'].value;
   const email = userForm['email'].value;
 
-  if (!editing) {
+  if (!editing) {//se hace uso del metodo post para enviar datos al servidor
     const response = await fetch('/api/users', {
       method: 'POST',
       headers: {
@@ -34,7 +34,7 @@ userForm.addEventListener('submit', async (e) => {
     const data = await response.json();
     users.unshift(data);
   } else {
-    const response = await fetch(`/api/users/${userId}`, {
+    const response = await fetch(`/api/users/${userId}`, {//en este caso se hace uso del metodo put para hacer updating de datos
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ userForm.addEventListener('submit', async (e) => {
     });
 
     const updateUser = await response.json();
-    users = users.map(user => user.id === updateUser.id ? updateUser : user);
+    users = users.map(user => user.id === updateUser.id ? updateUser : user);//se renderiza los datos guardados en render user
     renderUser(users);
     editing = false;
     userId = null;
@@ -57,7 +57,7 @@ userForm.addEventListener('submit', async (e) => {
   userForm.reset();
 });
 
-function renderUser(users) { //con esta funcion lo que hacemos es renderizar la informacion obtenida desde el backend o recibida desde el front end
+function renderUser(users) {//en esta funcion se ira creando en el DOM los datos correspondientes renderizando la informacion
   const userList = document.querySelector('#userList');
   console.log(userList);
   userList.innerHTML = '';
@@ -81,7 +81,7 @@ function renderUser(users) { //con esta funcion lo que hacemos es renderizar la 
       <p>${user.direccion}</p>
     `;
 
-    const btnDelete = userItem.querySelector('.btn-delete'); //en este boton delete hemos creado una funcion que al clickear eliminael dato deseado
+    const btnDelete = userItem.querySelector('.btn-delete');//se crea la funcion de boton delete
     btnDelete.addEventListener('click', async () => {
       const response = await fetch(`/api/users/${user.id}`, {
         method: 'DELETE',
@@ -91,7 +91,7 @@ function renderUser(users) { //con esta funcion lo que hacemos es renderizar la 
       renderUser(users);
     });
 
-    const btnEdit = userItem.querySelector('.btn-edit'); // hemos creado una funcion en la cual el boton edit nos permite editar lo deseado
+    const btnEdit = userItem.querySelector('.btn-edit');//se crean las funciones de envento en este caso edit
     btnEdit.addEventListener('click', async () => {
       const response = await fetch(`/api/users/${user.id}`);
       const data = await response.json();
@@ -103,7 +103,7 @@ function renderUser(users) { //con esta funcion lo que hacemos es renderizar la 
       userId = data.id;
     });
 
-    const dropdownToggle = userItem.querySelector('.dropdown-toggle');
+    const dropdownToggle = userItem.querySelector('.dropdown-toggle');//hicimos uso de boostrap para este boton desplegable
     const dropdownMenu = userItem.querySelector('.dropdown-menu');
     dropdownToggle.addEventListener('click', () => {
       dropdownMenu.classList.toggle('show');
@@ -112,3 +112,17 @@ function renderUser(users) { //con esta funcion lo que hacemos es renderizar la 
     userList.appendChild(userItem);
   });
 }
+
+const divElement = document.getElementById('desple');
+divElement.style.display = 'none'
+const hideButton = document.getElementById('botondesple');
+
+// simplemente se crea una funcion para desplegar no la informacion obtenida desde el backend
+hideButton.addEventListener('click', function() {
+  if(divElement.style.display === 'none'){
+    divElement.style.display = 'block'
+  }else{
+    divElement.style.display = 'none'
+  }
+  
+});
