@@ -1,14 +1,17 @@
+# Importar las clases y módulos necesarios
 from flask import Flask, request, jsonify, send_file
-from psycopg2 import connect, extras
-from cryptography.fernet import Fernet
-from dotenv import load_dotenv
-import os
-# comenzamos importando clases que utilizaremos en nuestro proyecto
+from psycopg2 import connect, extras #es una biblioteca de Python utilizada para interactuar con la base de datos PostgreSQL.
+from dotenv import load_dotenv #se utiliza para cargar variables de entorno desde un archivo .env.
+import os #se utiliza para acceder a variables del entorno del sistema.
+
+# Comenzamos importando clases que utilizaremos en nuestro proyecto
+
+# Cargar variables de entorno desde el archivo .env
 load_dotenv()
-# iniciamos proyecto
+
+# Iniciar proyecto Flask
 app = Flask(__name__)
-key = Fernet.generate_key()
-#definimos las variables de conexion
+# Definir las variables de conexión a la base de datos obtenidas de las variables de entorno
 host = os.environ.get('DB_HOST')
 port = os.environ.get('DB_PORT')
 dbname = os.environ.get('DB_NAME')
